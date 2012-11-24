@@ -1,6 +1,14 @@
 //ajaxrequest function to pass the argument for the type/amount of data i want (preview or full)
 function ajaxRequest(type) {
 	var xmlhttp;
+	var contentDiv;
+	
+	//gives the name of the div where the content is supposed to be
+	if(type = "preview") {
+		contentDiv = "right-block";
+	}else if(type = "full"){
+		contentDiv = "left-block";
+	}
 	
 	// code for IE7+, Firefox, Chrome, Opera, Safari
 	if (window.XMLHttpRequest) {
@@ -13,8 +21,7 @@ function ajaxRequest(type) {
 	
 	xmlhttp.onreadystatechange=function() {
 	  	if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-	  		//console.log(xmlhttp.responseText);
-	    	document.getElementById("right-block").innerHTML=xmlhttp.responseText;
+	    	document.getElementById(contentDiv).innerHTML=xmlhttp.responseText;
 	    }
   	}
   	

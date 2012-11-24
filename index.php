@@ -1,6 +1,7 @@
 <html>
 	<head>
 		<script src="js/ajax.js"></script>
+		
 	</head>
 	
 	<body onload="ajaxRequest('preview');">

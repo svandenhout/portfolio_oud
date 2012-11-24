@@ -1,11 +1,22 @@
-#container
+body {
+	margin: 0;
+	padding: 0;
+}
+
+#container {
+	display: inline;
+}
 
 #left-block {
-	width: 500px;
-	height: 600px;
+	float: left;
+	width: 50%;
+	height: 100%;
 	background-color: #D7DF01;
 }
 
 #right-block {
-	
+	float: left;
+	width: 50%;
+	height: 100%;
+	background-color: #FF0000;
 }

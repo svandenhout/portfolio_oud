@@ -1,14 +1,18 @@
 <?php 
 include_once "settings.php";
 
-previewContent();
-
-// if($_GET['type'] == "preview") {
-		// preview();
-// }
+// the type of content requested from the page
+switch ($_GET['type']) {
+	case 'preview':
+	previewContent();
+	break;
+	case 'full':
+	fullContent();
+	break;
+}
 
 	
-//connects to the database
+//connects to the database and returns the database object
 function __connectDatabase() {
 	$mysqli = mysqli_connect(DB_URL, DB_USERNAME, DB_PASSWORD, DB_NAME);
 	
@@ -16,22 +20,23 @@ function __connectDatabase() {
    		echo "Failed to connect to MySQL: " . $mysqli->connect_error;
 	}
 	
-	$result = $mysqli->query("SELECT * FROM subject");
-	$row = $result->fetch_assoc();
-	
-	return $row;
+	return $mysqli;
 }
 
 //gets the preview out of the database
 function previewContent() {
 	$db = __connectDatabase();
-	//print_r($db) ;
-	echo $db["title"];
-	echo $db["text_intro"];
+	$result = $db->query("SELECT * FROM subject");
+	while ($row = $result->fetch_assoc()) {
+		echo 	"<div class='preview-block'> 
+				<div class='title'>".$row['title']."</div>
+				
+				</div>";
+	}
 }
 
-//gets the full story out of the database
+//gets the full page out of the database
 function fullContent() {
-	
+	$db = __connectDatabase();
 }
 ?>
