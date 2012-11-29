@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="nl" lang="nl">
+	<head>
+		<!--TODO: firefox puts body down 80px (eerst in andere ff testen);
+		<!--TODO: search HTML DOCTYPE NOT WORKING XMLHTTP REQUEST-->
+	</head>
+	
+	<body onload="ajaxRequest('preview-buttons');">
+		<div id="container">
+			<div id="header"> <h1>Werk</h1> <button id="admin"></button> </div>
+			<div id="left-half"> <div class="inner-half" id="inner-left-half"> </div> </div>
+			<div id="right-half"> <div class="inner-half" id="inner-right-half"> </div> </div>
+		</div>
+	</body>
+	
+	<footer>
+		<script src="js/ajax.js"></script>
+		
+		<!--google webfonts is echt te gek-->
+		<link href='http://fonts.googleapis.com/css?family=ABeeZee:400,400italic' rel='stylesheet' type='text/css'>
+		<link href="style.css" type="text/css" rel="stylesheet" id="stylesheet"/>
+	</footer>
+</html>
