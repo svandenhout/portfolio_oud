@@ -19,15 +19,24 @@ while ($row = $result->fetch_assoc()) {
 	
 	//the html block that appears on the page as "preview button"
 	echo 
-	"<div class=\"preview-block\" 
+	"<div 
+        class=\"preview-block\" 
+        id=\"preview-block-" . (string) $count . "\"
+        
 		onclick=\"
 		ajaxRequest('background', " . $count . "); 
 		ajaxRequest('full-text', " . $count . ");
-		ajaxRequest('header', " . $count . ");
-	\">
-	<h2>" . $row["title"] . "</h2> 
+		ajaxRequest('header', " . $count . ");\"
+		
+		onmouseover=\"
+		animate('#preview-block-" . (string) $count . "');\"
+	>
+	
+	<div class=\"inside-preview-block\">
+	<h2>" . $row["title"] . "</h2>
+	</div>
+	
 	
 	</div>";
 }
 ?>
-

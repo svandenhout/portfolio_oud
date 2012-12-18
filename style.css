@@ -104,11 +104,22 @@ body {
 	text-indent: 20px;
 }
 
+/*
+.preview-block .inside-preview-block {
+	height: 70%;
+	width: 80%;
+	background-color: #CCCCCC;
+	opacity: 0.9;
+}
+*/
+
 .preview-block h2 {
 	margin: 0;
-	font-size: 40px;
+	font-size: 80%;
 	font-weight: normal;
+	float: center;
 }
+
 
 .preview-block:hover {
 	opacity: 0.4;
