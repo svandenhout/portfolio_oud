@@ -69,7 +69,7 @@ body {
 	height: 100%;
 }
 
-#left-half #inner-left-half #text-intro-box {
+#left-half #main-text #text-intro-box {
 	width: 60%;
 	font-style: italic;
 	text-indent: 30px;
@@ -78,7 +78,7 @@ body {
 	background-color: #cccccc;
 }
 
-#left-half #inner-left-half #text-body-box {
+#left-half #main-text #text-body-box {
 	width: 60%;
 	text-indent: 30px;
 }

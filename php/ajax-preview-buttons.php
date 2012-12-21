@@ -2,7 +2,6 @@
 /* 
  * retrieves the preview buttons out of the database 
  */
- 
 include_once "database.php";
 
 $db = __connectDatabase();
@@ -24,19 +23,16 @@ while ($row = $result->fetch_assoc()) {
         id=\"preview-block-" . (string) $count . "\"
         
 		onclick=\"
-		ajaxRequest('background', " . $count . "); 
-		ajaxRequest('full-text', " . $count . ");
-		ajaxRequest('header', " . $count . ");\"
+    		getBackground(" . $count . "); 
+    		getHeader(" . $count . ");
+    		getMainText(" . $count . ");
+        \"
 		
 		onmouseover=\"
-		animate('#preview-block-" . (string) $count . "');\"
+            animate('#preview-block-" . (string) $count . "');
+        \"
 	>
-	
-	<div class=\"inside-preview-block\">
 	<h2>" . $row["title"] . "</h2>
-	</div>
-	
-	
 	</div>";
 }
 ?>
