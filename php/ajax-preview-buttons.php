@@ -27,11 +27,12 @@ while ($row = $result->fetch_assoc()) {
     		getHeader(" . $count . ");
     		getMainText(" . $count . ");
         \"
-		
-		onmouseover=\"
-            animate('#preview-block-" . (string) $count . "');
-        \"
-	>
+    >
+     
+    <script>
+    
+    </script>
+	
 	<h2>" . $row["title"] . "</h2>
 	</div>";
 }

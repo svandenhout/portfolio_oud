@@ -3,8 +3,16 @@
  */
 function getPreviewButtons() {
     request({type: "preview-buttons"}, function() {
-        console.log(this);
         document.getElementById("preview-buttons").innerHTML = this;
+        
+        // hover animaties voor de preview blocks
+        $(".preview-block").hover(
+        function(){
+            animateOver("#" + $(this).attr('id'));
+        }, 
+        function(){
+            animateOut("#" + $(this).attr('id'));
+        });
     })
 }
 
