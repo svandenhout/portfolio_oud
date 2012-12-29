@@ -1,6 +1,6 @@
 <?php
 /*
- * retrieves the main text body from the database
+ * retrieves the intro text from the database
  */
  
 include_once "database.php";
@@ -10,5 +10,8 @@ $result =
     $db->query("SELECT * FROM subject WHERE (id='" . $_GET['index'] . "')");
 $row = $result->fetch_assoc();
 
-echo "<p>" . $row['text_body'] . "</p>";
+//TODO: echo afmaken
+echo "<div class='empty-space'></div>";
+echo "<div class='empty-space'></div>";
+echo "<p>" . $row['text_intro'] . "</p>";
 ?>

@@ -1,74 +1,179 @@
 /*
  * retrieves the preview buttons from the ajax request
+ * i also use this function to retrieve the first page i want people to see
  */
 function getPreviewButtons() {
-    request({type: "preview-buttons"}, function() {
-        document.getElementById("preview-buttons").innerHTML = this;
-    })
+    request({type: "preview-buttons"}, function(response) {
+        document.getElementById("preview-buttons").innerHTML = response;
+    });
+    
+    // get the content for the first page
+    getContent(1, "dark");
+}
+
+function getContent(index, colorprofile) {
+    var content = {}
+    
+    // request({type: "background", index: index}, function(response) {
+        // // document.getElementById("container").style.backgroundImage =
+            // // 'url(' + response + ')'
+        // loadedContent.background = response;
+        // // if(_.size(loadedContent))
+        // if(_.size(loadedContent) === 4) {
+            // fillPage(loadedContent);
+        // }
+    // });
+   
+    request({type: "background", index: index}, function(response) {
+        content.background = response;
+        if(_.size(content) === 4) {
+            fillPage(content);
+            buildGraphicInteractions(index, colorprofile)
+        }
+    });
+    
+    request({type: "header", index: index}, function(response) {
+        content.header = response;
+        if(_.size(content) === 4) {
+            fillPage(content);
+            buildGraphicInteractions(index, colorprofile)
+        }
+    });
+    
+    request({type: "intro-text", index: index}, function(response) {
+        content.introText = response;
+        if(_.size(content) === 4) {
+            fillPage(content);
+            buildGraphicInteractions(index, colorprofile)
+        }
+    });
+    
+    request({type: "main-text", index: index}, function(response) {
+        content.mainText = response;
+        if(_.size(content) === 4) {
+            fillPage(content);
+            buildGraphicInteractions(index, colorprofile)
+        }
+    });
+}
+
+function fillPage(content) {
+    var string;
+    
+    // background
+    document.getElementById("container").style.backgroundImage =
+            'url(' + content.background + ')'
+    
+    // header        
+    document.getElementById("header").innerHTML = content.header;
+    
+    // intro-text
+    string = makeSeperateTags(content.introText);
+    document.getElementById("intro-text").innerHTML = string;
+    
+    // main-text
+    string = makeSeperateTags(content.mainText);
+    document.getElementById("main-text").innerHTML = string;
 }
 
 /*
- * adds the active class to the clicked preview button
- * for unique css properties when a preview-button is active
+ * all of the interactive interface functionallity is added here
  */
-function addActiveClass(id) {
-    // checks for the active class and removes it
-    if($(".active")) {
-        $(".active").removeClass("active");
+function buildGraphicInteractions(index, colorProfile) {
+   
+    $("p").mouseover(function() {
+        $(this).toggleClass("mouseover");
+    }).mouseout(function() {
+        $(this).toggleClass("mouseover");
+    });
+    
+    // TODO: change stuff when everything is loaded
+    if(colorProfile) {
+        changeColorProfile("p", colorProfile);
+        changeColorProfile("h2", colorProfile);
+        changeColorProfile("a", colorProfile);
+        changeColorProfile("#header", colorProfile);
     }
     
-    // adds a new active class
-    $("#" + id).addClass("active");
+    // add the active class to the preview button
+    addActiveClass("preview-button-" + index);
+    hideLoader(index);
 }
 
 /*
  * retrieves the background from the ajax request
  */
 function getBackground(index) {
-        request({type: "background", index: index}, function() {
+    request({type: "background", index: index}, function() {
         document.getElementById("container").style.backgroundImage =
             'url(' + this + ')'
-    })
+    });
 }
 
 /*
  * retrieves the header from the ajax request
  */
-function getHeader(index) {
+function getHeader(index, colorProfile) {
     request({type: "header", index: index}, function() {
         document.getElementById("header").innerHTML = this;
-    })
+        
+        if(colorProfile) {
+            
+        }
+    });
+}
+
+function getIntroText(index, colorProfile) {
+    request({type: "intro-text", index: index}, function() {
+        var string = makeSeperateTags(this);
+        document.getElementById("intro-text").innerHTML = string;
+    });
 }
 
 /*
  * retrieves the main text from the ajax request, also changes the 
  * color profile to fit the active theme.
  */
-function getMainText(index, profile) {
+function getMainText(index, colorProfile) {
+    var mainText = "";
+    
     request({type: "main-text", index: index}, function() {
-        document.getElementById("main-text").innerHTML = this;
+        var string = makeSeperateTags(this);
+        document.getElementById("main-text").innerHTML = string;
         
-        // change the color profile 
-        if(profile) {
-            // if there is a current class it will be removed
-            var current = $("h2").attr('class');
-            
-            // p tag is used for all the project content
-            $("p").removeClass(current).addClass(profile);
-            
-            // h2 is used for all the preview buttons
-            $("h2").removeClass(current).addClass(profile);
+        /*
+         * mouseover tekenfunctionaliteit is gaaf
+         */
+        $("p").mouseover(function() {
+            $(this).toggleClass("mouseover");
+        }).mouseout(function() {
+            $(this).toggleClass("mouseover");
+        });
+        
+        // TODO: change stuff when everything is loaded
+        if(colorProfile) {
+            changeColorProfile("p", colorProfile);
+            changeColorProfile("h2", colorProfile);
+            changeColorProfile("a", colorProfile);
         }
-    })
+        
+        // add the active class to the preview button
+        addActiveClass("preview-button-" + index);
+        hideLoader(index);
+        
+        mainText = this;
+    });
+    if(mainText != "") {
+    console.log("2");
+    return mainText;
+    }
 }
 
 /*
  * ajaxrequest function to pass the argument for the datatype
- * i want
  */
 function request(actions, callback) {
-    
-    //initiate alll function variables
+    //initiate all function variables
     var type = actions.type,
         index = actions.index,
         xmlhttp,
@@ -83,13 +188,10 @@ function request(actions, callback) {
         xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
     }
     
-    //TODO build system with a php page for every ajax call
     //returns the right response to the right element
-    xmlhttp.onreadystatechange = function() {
-        if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            if(callback) {
-                callback.call(xmlhttp.responseText);
-            }
+    xmlhttp.onload = function() {
+        if(callback) {
+             callback(xmlhttp.responseText);
         }
     }
     

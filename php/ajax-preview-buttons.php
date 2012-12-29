@@ -23,18 +23,10 @@ while ($row = $result->fetch_assoc()) {
         id=\"preview-button-" . (string) $count . "\"
         
 		onclick=\"
-    		getBackground(" . $count . "); 
-    		getHeader(" . $count . ");
-    		getMainText(" . $count . ", '" . $row["color_profile"] . "');
-    		
-    		addActiveClass('preview-button-" . (string) $count . "');
+		    getContent(" . $count . ", '" . $row["color_profile"] . "');
         \"
     >
-     
-    <script>
-    
-    </script>
-	
+	<img id='loader-" . $count . "' class=\"hidden\" src=\"img/loading.gif\">
 	<h2>" . $row["title"] . "</h2>
 	</button>";
 }
