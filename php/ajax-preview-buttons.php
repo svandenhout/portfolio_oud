@@ -24,6 +24,7 @@ while ($row = $result->fetch_assoc()) {
         
 		onclick=\"
 		    getContent(" . $count . ", '" . $row["color_profile"] . "');
+		    showLoader(" . $count . ");
         \"
     >
 	<img id='loader-" . $count . "' class=\"hidden\" src=\"img/loading.gif\">

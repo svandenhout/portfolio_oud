@@ -75,6 +75,7 @@ function makeSeperateTags(str) {
         secondIndex = str.lastIndexOf("</a>") + 4;
         movieStr = str.substr(firstIndex, secondIndex);
         str = str.slice(0, firstIndex);
+        str = str + "</p>"
     }
 
     str = str.replace(/ /g, "\ </p><p>");
