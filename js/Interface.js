@@ -1,56 +1,69 @@
 /*
+ * all of the interactive interface elements are made here, most of these are
+ * expirimental and subject to change
+ */
+function Interface(index, colorProfile) {
+    this.index = index;
+    this.colorProfile = colorProfile;
+}
+
+/*
  * shows the loader 
  */
-function showLoader(index) {
+Interface.prototype.showLoader = function() {
     // remove current class from loader
-    var current = $("#loader-" + index).attr('class');
+    var current = $("#loader-" + this.index).attr('class');
     
     // adds a new visible class, so loader is visible
-    $("#loader-" + index).removeClass(current).addClass("visible");
+    $("#loader-" + this.index).removeClass(current).addClass("visible");
 }
 
 /*
  * hides the loader 
  */
-function hideLoader(index) {
+Interface.prototype.hideLoader = function() {
     // remove current class from loader
-    var current = $("#loader-" + index).attr('class');
+    var current = $("#loader-" + this.index).attr('class');
 
     // adds a new visible class, so loader is visible
-    $("#loader-" + index).removeClass(current).addClass("hidden");
+    $("#loader-" + this.index).removeClass(current).addClass("hidden");
 }
 
 /*
  * adds the active class to the clicked preview button
  * for unique css properties when a preview-button is active
  */
-function addActiveClass(id) {
+Interface.prototype.addActiveClass = function() {
     // checks for the active class and removes it
     if($(".active")) {
         $(".active").removeClass("active");
     }
     
     // adds a new active class
-    $("#" + id).addClass("active");
+    $("#preview-button-" + this.index).addClass("active");
 }
 
-function changeColorProfile(element, colorProfile) {
+Interface.prototype.changeColorProfile = function(element) {
     // if there is a current class it will be removed
     var current = $(element).attr('class');
     
-    if(element != "#header") {
-        $(element).removeClass(current).addClass("text-" + colorProfile);
+    if(element !== "#header") {
+        $(element).removeClass(current).addClass(
+            "text-" + this.colorProfile
+        );
     } else {
-        $(element).removeClass(current).addClass("header-" + colorProfile);
+        $(element).removeClass(current).addClass(
+            "header-" + this.colorProfile
+        );
     }
 }
+
 
 /*
  * function that completely pulls apart the string and makes gives every word a
  * paragraph tag so i can highlight different words
  * 
  * also makes sure all the div sections are preserved
- * TODO: schrijf script voor video & hyperlinks
  * 
  * TODO: dit kan vele malen netter
  * ^ doen dmv splitten en overnieuw in elkaar zetten

@@ -44,6 +44,7 @@ h2 {
 	margin-bottom: -80px;
 	padding-top: 0px;
 	text-indent: 10px;
+	z-index: 2;
 }
 
 #header h1 { 
@@ -123,10 +124,11 @@ h2 {
     color: #000000;
 }
 
+
 #right-half .inner-half .preview-button:hover {
-	opacity: 0.2;
-    background-color: #FFFFFF;
+    color: #99cc33;
 }
+
 
 #right-half .inner-half .active {
     text-indent: 2%;
@@ -153,7 +155,7 @@ h2 {
  * color profiles
  */
 .header-light {
-    opacity: 0.6;
+    opacity: 0.8;
     background-color: #FFFFFF;
 }
 

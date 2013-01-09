@@ -16,7 +16,6 @@ function Content() {
 Content.prototype.getPreviewButtons = function() {
     var ajax = new Ajax();
     ajax.getXMLhttpObject();
-    console.log(ajax);
     ajax.request({type: "preview-buttons"}, function(response) {
         document.getElementById("preview-buttons").innerHTML = response;
     });
@@ -108,7 +107,8 @@ Content.prototype.drawPage = function(content) {
 }
 
 Content.prototype.buildDynamicInterface = function(index, colorProfile) {
-   
+    var dynamicInterface = new Interface(index, colorProfile);
+    
     $("p").mouseover(function() {
         $(this).toggleClass("mouseover");
     }).mouseout(function() {
@@ -116,13 +116,13 @@ Content.prototype.buildDynamicInterface = function(index, colorProfile) {
     });
     
     if(colorProfile) {
-        changeColorProfile("p", colorProfile);
-        changeColorProfile("h2", colorProfile);
-        changeColorProfile("a", colorProfile);
-        changeColorProfile("#header", colorProfile);
+        dynamicInterface.changeColorProfile("p");
+        dynamicInterface.changeColorProfile("h2");
+        dynamicInterface.changeColorProfile("a");
+        dynamicInterface.changeColorProfile("#header");
     }
     
     // add the active class to the preview button
-    addActiveClass("preview-button-" + index);
-    hideLoader(index);
+    dynamicInterface.addActiveClass(index);
+    dynamicInterface.hideLoader(index);
 }
