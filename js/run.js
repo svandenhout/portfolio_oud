@@ -1,6 +1,6 @@
 function onLoad() {
     var content = new Content();
-    content.getPreviewButtons();
+    content.drawPreviewButtons();
     content.getContent(content, 6, "dark");
 }
 

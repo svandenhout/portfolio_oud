@@ -25,6 +25,13 @@ p {
     padding: 0;
 }
 
+/*
+ * awesome mouse over text thing
+ */
+p:hover {
+    background-color: #ff00cc;
+}
+
 h1 {
     white-space: pre;
 }
@@ -79,7 +86,6 @@ h2 {
 	float: left;
 	width: 40%;
 	height: 100%;
-	
 }
 
 #left-half .inner-half {
@@ -120,15 +126,9 @@ h2 {
 	text-indent: 20%;
 	
 	font-size: 60px;
-	opacity: 0.6;
+	opacity: 0.8;
     color: #000000;
 }
-
-
-#right-half .inner-half .preview-button:hover {
-    color: #99cc33;
-}
-
 
 #right-half .inner-half .active {
     text-indent: 2%;
@@ -163,12 +163,13 @@ h2 {
     color: #cccccc;
 }
 
-.h2-text-light {
-    color: #FFFFFF;
+.text-light:hover {
+    color: #99cc33;
 }
 
+
 .header-dark {
-    opacity: 0.7;
+    opacity: 0.8;
     background-color: #000000;
 }
 
@@ -176,13 +177,6 @@ h2 {
     color: #666666;
 }
 
-.h2-text-dark {
-    color: #000000;
-}
-
-/*
- * awesome mouse over text thing
- */
-.mouseover {
-    background-color: #ff00cc;
+.text-dark:hover {
+    color: #99cc33;
 }

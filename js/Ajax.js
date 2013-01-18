@@ -1,6 +1,3 @@
-/*
- * constructor of Ajax()
- */
 function Ajax() {
     this.xmlhttp;
 }

@@ -1,5 +1,6 @@
 /*
- * the constructor
+ * Content is the constructor for all the functionality that retrieves the
+ * content from the database and writes it to the page
  */
 function Content() {
     this.background = null;
@@ -13,7 +14,7 @@ function Content() {
  * previewbuttons are written to the page immediately unlike other elements 
  * which are stored inside an object first
  */
-Content.prototype.getPreviewButtons = function() {
+Content.prototype.drawPreviewButtons = function() {
     var ajax = new Ajax();
     ajax.getXMLhttpObject();
     ajax.request({type: "preview-buttons"}, function(response) {
@@ -74,6 +75,10 @@ Content.prototype.getContent = function(content, index, colorprofile) {
     });
 }
 
+/*
+ * returns true if all of the content has been loaded, make sure to add a new
+ * content type to this method
+ */
 Content.prototype.checkContent = function(content) {
     if(
         this.background !== null &&
@@ -86,6 +91,10 @@ Content.prototype.checkContent = function(content) {
         return false;
     }
 }
+
+/*
+ * draws all of the content to the page
+ */
 
 Content.prototype.drawPage = function(content) {
     var string;
@@ -106,14 +115,11 @@ Content.prototype.drawPage = function(content) {
     document.getElementById("main-text").innerHTML = string;
 }
 
+/*
+ * adds all of the interactive interface functionality to the page
+ */
 Content.prototype.buildDynamicInterface = function(index, colorProfile) {
     var dynamicInterface = new Interface(index, colorProfile);
-    
-    $("p").mouseover(function() {
-        $(this).toggleClass("mouseover");
-    }).mouseout(function() {
-        $(this).toggleClass("mouseover");
-    });
     
     if(colorProfile) {
         dynamicInterface.changeColorProfile("p");
