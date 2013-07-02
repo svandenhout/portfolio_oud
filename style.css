@@ -15,7 +15,7 @@ body {
 	height: 100%;
 	margin: 0px; 
 	padding: 0px;
-	font-family: 'ABeeZee';
+	font-family: 'ABeeZee', sans-serif;
 }
 
 p {
@@ -103,6 +103,12 @@ h2 {
 #left-half #main-text {
     margin-left: 60px;
     overflow: auto
+}
+
+#left-half #video {
+    border: solid;
+    border-width: 1px;
+    border-color: #99cc33;
 }
 
 

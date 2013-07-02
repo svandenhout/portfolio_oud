@@ -6,7 +6,8 @@ function Content() {
     this.background = null;
     this.header = null;
     this.introText = null;
-    this.mainText = null; 
+    this.mainText = null;
+    this.video = null;
 }
 
 /*
@@ -73,6 +74,16 @@ Content.prototype.getContent = function(content, index, colorprofile) {
             content.buildDynamicInterface(index, colorprofile);
         }
     });
+    
+    ajax.getXMLhttpObject();
+    ajax.request({type: "video", index: index}, function(response) {
+        content.video = response;
+        loaded = content.checkContent();
+        if(loaded) {
+            content.drawPage(content);
+            content.buildDynamicInterface(index, colorprofile);
+        }
+    });
 }
 
 /*
@@ -84,7 +95,8 @@ Content.prototype.checkContent = function(content) {
         this.background !== null &&
         this.header !== null &&
         this.introText !== null &&
-        this.mainText !== null
+        this.mainText !== null &&
+        this.video !== null
     ) {
         return true;
     }else {
@@ -103,7 +115,7 @@ Content.prototype.drawPage = function(content) {
     document.getElementById("container").style.backgroundImage =
             'url(' + content.background + ')'
     
-    // header        
+    // header
     document.getElementById("header").innerHTML = content.header;
     
     // intro-text
@@ -113,6 +125,9 @@ Content.prototype.drawPage = function(content) {
     // main-text
     string = makeSeperateTags(content.mainText);
     document.getElementById("main-text").innerHTML = string;
+    
+    // video's
+    document.getElementById("video").innerHTML = content.video;
 }
 
 /*

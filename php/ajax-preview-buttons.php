@@ -5,7 +5,9 @@
 include_once "database.php";
 
 $db = __connectDatabase();
-$result = $db->query("SELECT * FROM subject");
+$result = $db->query("SELECT id color-profile header FROM subject");
+
+print_r($result);
 
 // empty space div is necessary for dynamic styling purposes
 echo "<div class='empty-space'></div>";
@@ -14,7 +16,7 @@ echo "<div class='empty-space'></div>";
 while ($row = $result->fetch_assoc()) {
 	
 	// the html button that appears on the page as "preview button"
-	echo 
+	echo
 	"<button 
         class=\"preview-button\" 
         id=\"preview-button-" . (string) $row["id"] . "\"
@@ -25,7 +27,7 @@ while ($row = $result->fetch_assoc()) {
         \"
     >
 	<img id='loader-" . $row["id"] . "' class=\"hidden\" src=\"img/loading.gif\">
-	<h2>" . $row["title"] . "</h2>
+	<h2>" . $row["header"] . "</h2>
 	</button>";
 }
 ?>

@@ -6,10 +6,11 @@
 include_once "database.php";
 
 $db = __connectDatabase();
-$result = 
-    $db->query("SELECT * FROM subject WHERE (id='" . $_GET['index'] . "')");
+$result = $db->query(
+    "SELECT header FROM subject WHERE (id='" . $_GET['index'] . "')"
+);
     
 $row = $result->fetch_assoc();
-echo "<h1>" . $row['title'] . "</h1>";
+echo "<h1>" . $row['header'] . "</h1>";
 
 ?>
