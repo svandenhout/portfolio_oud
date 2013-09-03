@@ -57,6 +57,7 @@ Content.prototype.getContent = function(content, index, colorprofile) {
     
     ajax.getXMLhttpObject();
     ajax.request({type: "intro-text", index: index}, function(response) {
+        // console.log("intro" + response);
         content.introText = response;
         loaded = content.checkContent();
         if(loaded) {
@@ -67,7 +68,6 @@ Content.prototype.getContent = function(content, index, colorprofile) {
     
     ajax.getXMLhttpObject();
     ajax.request({type: "main-text", index: index}, function(response) {
-        console.log("main-text")
         content.mainText = response;
         loaded = content.checkContent();
         if(loaded) {
@@ -115,18 +115,18 @@ Content.prototype.drawPage = function(content) {
     
     // background
     document.getElementById("container").style.backgroundImage =
-            'url(' + content.background + ')'
+            'url(' + content.background + ')';
     
     // header
     document.getElementById("header").innerHTML = content.header;
     
     // intro-text
-    // string = makeSeperateTags(content.introText);
-    document.getElementById("intro-text").innerHTML = content.introText;
+    string = makeSeperateTags(content.introText);
+    document.getElementById("intro-text").innerHTML = string;
     
     // main-text
-    // string = makeSeperateTags(content.mainText);
-    document.getElementById("main-text").innerHTML = content.mainText;
+    string = makeSeperateTags(content.mainText);
+    document.getElementById("main-text").innerHTML = string;
     
     // video's
     document.getElementById("video").innerHTML = content.video;
