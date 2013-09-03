@@ -5,7 +5,7 @@
 include_once "database.php";
 
 $db = __connectDatabase();
-$result = $db->query("SELECT id color-profile header FROM subject");
+$result = $db->query("SELECT * FROM subject");
 
 print_r($result);
 
@@ -22,12 +22,14 @@ while ($row = $result->fetch_assoc()) {
         id=\"preview-button-" . (string) $row["id"] . "\"
         
 		onclick=\"
-		    onClick(" . $row["id"] . ", '" . $row["color_profile"] . "');
+		    onClick(" . $row["id"] . ", '" . $row["color-profile"] . "');
 		    showLoader(" . $row["id"] . ");
         \"
     >
-	<img id='loader-" . $row["id"] . "' class=\"hidden\" src=\"img/loading.gif\">
-	<h2>" . $row["header"] . "</h2>
-	</button>";
+    <h2> <img id='loader-" . 
+        $row["id"] . 
+    "' class=\"hidden\" src=\"img/loading.gif\">" . 
+        $row["header"] . 
+    "</h2> </button>";
 }
 ?>

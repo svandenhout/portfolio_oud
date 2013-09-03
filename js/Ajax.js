@@ -6,7 +6,6 @@ Ajax.prototype.getXMLhttpObject = function() {
     // code for IE7+, Firefox, Chrome, Opera, Safari
     if (window.XMLHttpRequest) {
         xmlhttp = new XMLHttpRequest();
-        
     // code for IE6, IE5
     } else {
         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
@@ -25,7 +24,8 @@ Ajax.prototype.request = function(actions, callback) {
     //returns the right response to the right element
     this.xmlhttp.onload = function() {
         if(callback) {
-             callback(this.responseText);
+            console.log(this);
+            callback(this.responseText);
         }
     }
     

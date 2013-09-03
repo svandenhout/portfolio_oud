@@ -37,6 +37,7 @@ h1 {
 }
 
 h2 {
+    display: block;
     white-space: pre;
 }
 
@@ -94,21 +95,28 @@ h2 {
 }
 
 #left-half #intro-text {
-    margin-left: 60px;
+    margin-left: 30px;
 	font-style: italic;
 	padding-bottom: 30px;
 	overflow: auto;
 }
 
 #left-half #main-text {
-    margin-left: 60px;
+    margin-left: 30px;
     overflow: auto
 }
 
 #left-half #video {
+    margin-top: 20px;
     border: solid;
     border-width: 1px;
     border-color: #99cc33;
+    width: 95%;
+}
+
+#left-half #video iframe {
+    width: 100%;
+    height: 280px;
 }
 
 
@@ -122,15 +130,14 @@ h2 {
     border: 0;
     background: 0;
     text-align: left;
-
+    text-indent: 10%;
 	border-bottom: solid;
 	border-color: #99cc33;
 	
 	width: 100%;
 	margin: 0;
 	height: 200px;
-	text-indent: 20%;
-	
+		
 	font-size: 60px;
 	opacity: 0.8;
     color: #000000;
@@ -145,6 +152,7 @@ h2 {
  */
 .visible {
     margin-right: -50px;
+    margin-bottom: -40px;
     float: left;
     position: relative;
     visibility: visible;
@@ -152,6 +160,7 @@ h2 {
 
 .hidden {
     margin-right: -50px;
+    margin-bottom: -40px;
     float: left;
     position: relative;
     visibility: hidden;

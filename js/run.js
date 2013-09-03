@@ -1,7 +1,7 @@
 function onLoad() {
     var content = new Content();
     content.drawPreviewButtons();
-    content.getContent(content, 6, "dark");
+    content.getContent(content, 1, "light");
 }
 
 function onClick(index, colorProfile) {

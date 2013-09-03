@@ -67,6 +67,7 @@ Content.prototype.getContent = function(content, index, colorprofile) {
     
     ajax.getXMLhttpObject();
     ajax.request({type: "main-text", index: index}, function(response) {
+        console.log("main-text")
         content.mainText = response;
         loaded = content.checkContent();
         if(loaded) {
@@ -106,6 +107,7 @@ Content.prototype.checkContent = function(content) {
 
 /*
  * draws all of the content to the page
+ * uncomment makeSeperateTags functionality
  */
 
 Content.prototype.drawPage = function(content) {
@@ -119,12 +121,12 @@ Content.prototype.drawPage = function(content) {
     document.getElementById("header").innerHTML = content.header;
     
     // intro-text
-    string = makeSeperateTags(content.introText);
-    document.getElementById("intro-text").innerHTML = string;
+    // string = makeSeperateTags(content.introText);
+    document.getElementById("intro-text").innerHTML = content.introText;
     
     // main-text
-    string = makeSeperateTags(content.mainText);
-    document.getElementById("main-text").innerHTML = string;
+    // string = makeSeperateTags(content.mainText);
+    document.getElementById("main-text").innerHTML = content.mainText;
     
     // video's
     document.getElementById("video").innerHTML = content.video;

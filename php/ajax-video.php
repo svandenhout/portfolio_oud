@@ -7,7 +7,7 @@ include_once "database.php";
 
 $db = __connectDatabase();
 $result = 
-    $db->query("SELECT video FROM subject WHERE (id='" . $_GET['index'] . "')");
+    $db->query("SELECT * FROM subject WHERE (id='" . $_GET['index'] . "')");
 $row = $result->fetch_assoc();
     
 echo $row['video'];

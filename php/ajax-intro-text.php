@@ -7,7 +7,7 @@ include_once "database.php";
 
 $db = __connectDatabase();
 $result = $db->query(
-    "SELECT intro-text FROM subject WHERE (id='" . $_GET['index'] . "')"
+    "SELECT * FROM subject WHERE (id='" . $_GET['index'] . "')"
 );
 $row = $result->fetch_assoc();
 
