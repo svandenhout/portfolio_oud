@@ -65,35 +65,35 @@ Interface.prototype.changeColorProfile = function(element) {
  * 
  * also makes sure all the div sections are preserved
  * 
- * TODO: dit kan vele malen netter
+ * TODO: if i want this to happen it should happen in the model......
  * ^ doen dmv splitten en overnieuw in elkaar zetten
  */
-function makeSeperateTags(str) {
-    var firstIndex;
-    var secondIndex;
-    
-    // strings
-    var divs = "";
-    var movieStr = "";
-    
-    // check for div sections at the start and remove them from the string
-    if(str.indexOf("<div") != -1) {
-        secondIndex = str.lastIndexOf("</div>") + 6;
-        divs = str.substr(0, secondIndex);
-        str = str.slice(secondIndex, str.length);
-    }
-    
-    firstIndex = str.indexOf("<iframe");
-    if(firstIndex != -1) {
-        secondIndex = str.lastIndexOf("</a>") + 4;
-        movieStr = str.substr(firstIndex, secondIndex);
-        str = str.slice(0, firstIndex);
-        str = str + "</p>"
-    }
-
-    str = str.replace(/ /g, "\ </p><p>");
-    
-    
-    var bigString = divs + str + movieStr;
-    return bigString;
-}
+// function makeSeperateTags(str) {
+    // var firstIndex;
+    // var secondIndex;
+//     
+    // // strings
+    // var divs = "";
+    // var movieStr = "";
+//     
+    // // check for div sections at the start and remove them from the string
+    // if(str.indexOf("<div") != -1) {
+        // secondIndex = str.lastIndexOf("</div>") + 6;
+        // divs = str.substr(0, secondIndex);
+        // str = str.slice(secondIndex, str.length);
+    // }
+//     
+    // firstIndex = str.indexOf("<iframe");
+    // if(firstIndex != -1) {
+        // secondIndex = str.lastIndexOf("</a>") + 4;
+        // movieStr = str.substr(firstIndex, secondIndex);
+        // str = str.slice(0, firstIndex);
+        // str = str + "</p>"
+    // }
+// 
+    // str = str.replace(/ /g, "\ </p><p>");
+//     
+//     
+    // var bigString = divs + str + movieStr;
+    // return bigString;
+// }

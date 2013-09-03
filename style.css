@@ -28,9 +28,9 @@ p {
 /*
  * awesome mouse over text thing
  */
-p:hover {
+/*p:hover {
     background-color: #ff00cc;
-}
+}*/
 
 h1 {
     white-space: pre;
@@ -178,9 +178,9 @@ h2 {
     color: #cccccc;
 }
 
-.text-light:hover {
+/*.text-light:hover {
     color: #99cc33;
-}
+}*/
 
 
 .header-dark {
@@ -192,6 +192,6 @@ h2 {
     color: #666666;
 }
 
-.text-dark:hover {
+/*.text-dark:hover {
     color: #99cc33;
-}
+}*/
